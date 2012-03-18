@@ -9,8 +9,8 @@ import javax.ws.rs.core.MediaType;
 public class TestResource {
 	
 	@GET
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	public String sayHello() {
-		return "Hello world! I love REST!";
+		return "{\"hello\":\"world\"}";
 	}
 }
