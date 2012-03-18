@@ -11,6 +11,7 @@ public class Place extends RemoteResource {
 	private CGPlacesDetailLocation locationObj;
 	
 	private int locationId;
+	private String publicId;
 	private String name;
 	private String phone;
 	private String businessHours;
@@ -31,6 +32,7 @@ public class Place extends RemoteResource {
 			locationObj = results.getLocation();
 			
 			name = locationObj.getName();
+			publicId = locationObj.getPublicId();
 			phone = locationObj.getPhone();
 			businessHours = locationObj.getBusinessHours();
 			latLon = getLatLon();
@@ -44,6 +46,10 @@ public class Place extends RemoteResource {
 
 	public int getLocationId() {
 		return locationId;
+	}
+	
+	public String getPublicId() {
+		return publicId;
 	}
 
 	public String getName() {

@@ -7,6 +7,6 @@
     <body>
         <h1>Place Details</h1>
         
-        <h4><c:out value="${locationName}"></c:out></h4>
+        <h4><c:out value="${locationName}"></c:out> (<c:out value="${publicId}"></c:out>)</h4>
     </body>
 </html>
