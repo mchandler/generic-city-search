@@ -14,11 +14,11 @@ public class Place extends RemoteResource {
 	private String name;
 	private String phone;
 	private String businessHours;
-	//TODO: Address and Reviews
-	
-	public Place() {
-		super();
-	}
+	@SuppressWarnings("unused")
+	private String latLon;
+	private int reviewCount;
+	@SuppressWarnings("unused")
+	private String websiteUri;
 	
 	public Place(int locationId) {
 		super();
@@ -33,6 +33,9 @@ public class Place extends RemoteResource {
 			name = locationObj.getName();
 			phone = locationObj.getPhone();
 			businessHours = locationObj.getBusinessHours();
+			latLon = getLatLon();
+			reviewCount = locationObj.getReviews().getCount();
+			websiteUri = getWebsite();
 			
 		} catch (CGException e) {
 			// TODO: Handle failures
@@ -63,5 +66,17 @@ public class Place extends RemoteResource {
 		String lat = new Double(locationObj.getLatlon().getLatitude()).toString();
 		String lon = new Double(locationObj.getLatlon().getLongitude()).toString();
 		return lat + ", " + lon;
+	}
+
+	public int getReviewCount() {
+		return reviewCount;
+	}
+	
+	public String getWebsite() {
+		if (locationObj.getUrls().getWebsite() == null) {
+			return "";
+		}
+		
+		return locationObj.getUrls().getWebsite().toString();
 	}
 }
