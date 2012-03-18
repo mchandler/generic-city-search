@@ -6,5 +6,7 @@
     </head>
     <body>
         <h1>Hello world!</h1>
+        
+        <h4><c:out value="${locationName}"></c:out></h4>
     </body>
 </html>
