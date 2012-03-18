@@ -11,4 +11,9 @@ public class Test {
 		return "home";
 	}
 	
+	@RequestMapping(value = "/about-us")
+	public String aboutUs() {
+		return "about-us";
+	}
+	
 }
