@@ -2,12 +2,13 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.rmwebfx</groupId>
   <artifactId>citygridsearch</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.3-SNAPSHOT</version>
   <packaging>war</packaging>
   
   <properties>
   	<java-version>1.6</java-version>
   	<org.springframework.version>3.1.0.RELEASE</org.springframework.version>
+  	<com.sun.jersey.version>1.12</com.sun.jersey.version>
   	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
@@ -47,6 +48,51 @@
 		<groupId>org.codehaus.jackson</groupId>
 		<artifactId>jackson-mapper-asl</artifactId>
 		<version>1.9.4</version>
+	</dependency>
+	<!-- Jersey - REST -->
+	<dependency>
+		<groupId>com.sun.jersey</groupId>
+		<artifactId>jersey-server</artifactId>
+		<version>${com.sun.jersey.version}</version>
+	</dependency>
+	<dependency>
+	    <groupId>com.sun.jersey</groupId>
+	    <artifactId>jersey-client</artifactId>
+	    <version>${com.sun.jersey.version}</version>
+	</dependency>
+	<dependency>
+	    <groupId>com.sun.jersey</groupId>
+	    <artifactId>jersey-json</artifactId>
+	    <version>${com.sun.jersey.version}</version>
+	</dependency>
+	<!-- Jersey Contribs includes its own Spring dependencies that cause conflicts -->
+	<!-- To that end, we'll exclude those dependencies here -->
+	<dependency>
+	    <groupId>com.sun.jersey.contribs</groupId>
+	    <artifactId>jersey-spring</artifactId>
+	    <version>${com.sun.jersey.version}</version>
+	    <exclusions>
+	        <exclusion>
+	            <groupId>org.springframework</groupId>
+	            <artifactId>spring</artifactId>
+	        </exclusion>
+	        <exclusion>
+	            <groupId>org.springframework</groupId>
+	            <artifactId>spring-core</artifactId>
+	        </exclusion>
+	        <exclusion>
+	            <groupId>org.springframework</groupId>
+	            <artifactId>spring-web</artifactId>
+	        </exclusion>
+	        <exclusion>
+	            <groupId>org.springframework</groupId>
+	            <artifactId>spring-beans</artifactId>
+	        </exclusion>
+	        <exclusion>
+	            <groupId>org.springframework</groupId>
+	            <artifactId>spring-context</artifactId>
+	        </exclusion>
+    	</exclusions>
 	</dependency>
 	
 	<dependency>
