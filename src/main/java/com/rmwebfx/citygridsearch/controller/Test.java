@@ -8,7 +8,7 @@ public class Test {
 	
 	@RequestMapping(value = "/")
 	public String home() {
-		return "WEB-INF/views/home.jsp";
+		return "home";
 	}
 	
 }
