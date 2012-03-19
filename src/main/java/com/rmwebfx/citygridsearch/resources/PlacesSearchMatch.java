@@ -49,5 +49,24 @@ public class PlacesSearchMatch {
 	public String getImage() {
 		return locationObj.getImage().toString();
 	}
+	
+	public String getCategories() {
+		StringBuilder cats = new StringBuilder();
+		String[] categories = locationObj.getCategories();
+		
+		if (categories.length == 0) {
+			return "";
+		}
+		
+		for (int i = 0; i < categories.length; i++) {
+			if (i > 0) {
+				cats.append(", ");
+			}
+			
+			cats.append(categories[i]);
+		}
+		
+		return cats.toString();
+	}
 
 }
