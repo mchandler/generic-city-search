@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.rmwebfx.citygridsearch.config.Constants;
 import com.rmwebfx.citygridsearch.resources.Place;
 import com.rmwebfx.citygridsearch.resources.PlacesSearch;
 
@@ -12,7 +13,7 @@ public class Test {
 	
 	@RequestMapping(value = "/")
 	public String home(Model model) {
-		PlacesSearch search = new PlacesSearch("Restaurant","Simi Valley, CA");
+		PlacesSearch search = new PlacesSearch("Restaurant", Constants.SITEWIDE_CITY_STATE);
 		
 		model.addAttribute("matches", search.getPlaces());
 		return "home";
