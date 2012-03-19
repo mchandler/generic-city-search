@@ -13,7 +13,6 @@ public class Place extends RemoteResource {
 	private int locationId;
 	private String publicId;
 	private String name;
-	@SuppressWarnings("unused")
 	private PlaceAddress address;
 	private String phone;
 	private String businessHours;
