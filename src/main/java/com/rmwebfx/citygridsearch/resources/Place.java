@@ -13,13 +13,15 @@ public class Place extends RemoteResource {
 	private int locationId;
 	private String publicId;
 	private String name;
+	@SuppressWarnings("unused")
+	private PlaceAddress address;
 	private String phone;
 	private String businessHours;
-	@SuppressWarnings("unused")
-	private String latLon;
 	private int reviewCount;
-	@SuppressWarnings("unused")
-	private String websiteUri;
+	
+	public Place() {
+		super();
+	}
 	
 	public Place(int locationId) {
 		super();
@@ -29,21 +31,27 @@ public class Place extends RemoteResource {
 		
 		try {
 			CGPlacesDetailResults results = detail.detail();
-			locationObj = results.getLocation();
-			
-			name = locationObj.getName();
-			publicId = locationObj.getPublicId();
-			phone = locationObj.getPhone();
-			businessHours = locationObj.getBusinessHours();
-			latLon = getLatLon();
-			reviewCount = locationObj.getReviews().getCount();
-			websiteUri = getWebsite();
-			
+			initializeByLocationObj(results.getLocation());
 		} catch (CGException e) {
 			// TODO: Handle failures
 		}
 	}
 
+	public void initializeByLocationObj(CGPlacesDetailLocation locationObj) {
+		this.locationObj = locationObj;
+		
+		name = locationObj.getName();
+		publicId = locationObj.getPublicId();
+		phone = locationObj.getPhone();
+		setAddress();
+		businessHours = locationObj.getBusinessHours();
+		reviewCount = locationObj.getReviews().getCount();
+	}
+	
+	public boolean isSameLocation(Place otherPlace) {
+		return (otherPlace.getLatLon().equals(this.getLatLon())) ? true : false;
+	}
+	
 	public int getLocationId() {
 		return locationId;
 	}
@@ -84,5 +92,17 @@ public class Place extends RemoteResource {
 		}
 		
 		return locationObj.getUrls().getWebsite().toString();
+	}
+	
+	private void setAddress() {
+		if (locationObj.getAddress() == null) {
+			return;
+		}
+		
+		address = new PlaceAddress(locationObj.getAddress());
+	}
+	
+	public PlaceAddress getAddress() {
+		return address;
 	}
 }
