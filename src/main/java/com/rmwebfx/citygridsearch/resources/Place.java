@@ -1,5 +1,9 @@
 package com.rmwebfx.citygridsearch.resources;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.citygrid.CGBaseReview;
 import com.citygrid.CGException;
 import com.citygrid.CityGrid;
 import com.citygrid.content.places.detail.CGPlacesDetail;
@@ -17,6 +21,7 @@ public class Place extends RemoteResource {
 	private String phone;
 	private String businessHours;
 	private int reviewCount;
+	private List<Review> reviews;
 	
 	public Place() {
 		super();
@@ -42,9 +47,11 @@ public class Place extends RemoteResource {
 		name = locationObj.getName();
 		publicId = locationObj.getPublicId();
 		phone = locationObj.getPhone();
-		setAddress();
 		businessHours = locationObj.getBusinessHours();
 		reviewCount = locationObj.getReviews().getCount();
+		
+		setAddress();
+		setAllReviews();
 	}
 	
 	public boolean isSameLocation(Place otherPlace) {
@@ -103,5 +110,15 @@ public class Place extends RemoteResource {
 	
 	public PlaceAddress getAddress() {
 		return address;
+	}
+	
+	public void setAllReviews() {
+		CGBaseReview[] allReviews = locationObj.getReviews().getReviews();
+		reviews = new ArrayList<Review>();
+		
+		for (int i = 0; i < allReviews.length; i++) {
+			Review review = new Review(allReviews[i]);
+			reviews.add(review);
+		}
 	}
 }
