@@ -112,6 +112,10 @@ public class Place extends RemoteResource {
 		return address;
 	}
 	
+	public List<Review> getReviews() {
+		return reviews;
+	}
+	
 	public void setAllReviews() {
 		CGBaseReview[] allReviews = locationObj.getReviews().getReviews();
 		reviews = new ArrayList<Review>();
