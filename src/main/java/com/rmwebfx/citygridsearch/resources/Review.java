@@ -20,6 +20,10 @@ public class Review {
 		return reviewObj.getUrl().toString();
 	}
 	
+	public String getText() {
+		return reviewObj.getText();
+	}
+	
 	public Date getDate() {
 		return reviewObj.getDate();
 	}
