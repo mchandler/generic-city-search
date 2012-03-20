@@ -8,7 +8,7 @@
         <title>Home</title>
     </head>
     <body>
-        <h1>Hello world!</h1>
+        <h1>Search Results</h1>
         
         <% 
         	ArrayList<PlacesSearchMatch> matches = (ArrayList<PlacesSearchMatch>) request.getAttribute("matches");

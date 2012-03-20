@@ -10,12 +10,12 @@
     <body>
         <h1>Place Details</h1>
         
-        <h4><c:out value="${locationName}"></c:out> (<c:out value="${publicId}"></c:out>)</h4>
+        <h4><c:out value="${locationName}"></c:out></h4>
         
         <%
         	List<Review> reviews = (ArrayList<Review>) request.getAttribute("reviews");
         %>
         
-        <p><%= reviews.get(0).getTitle() %></p>
+        <p><b><%= reviews.get(0).getTitle() %></b><br/><%= reviews.get(0).getText() %></p>
     </body>
 </html>

@@ -1,6 +1,7 @@
 package com.rmwebfx.citygridsearch.resources;
 
 import com.citygrid.content.places.search.CGPlacesSearchLocation;
+import com.rmwebfx.citygridsearch.config.Constants;
 
 public class PlacesSearchMatch {
 	
@@ -10,7 +11,6 @@ public class PlacesSearchMatch {
 	private PlaceAddress address;
 	private String tagline;
 	private int locationId;
-	private String publicId;
 	
 	public PlacesSearchMatch(CGPlacesSearchLocation location) {
 		this.locationObj = location;
@@ -19,7 +19,6 @@ public class PlacesSearchMatch {
 		address = new PlaceAddress(locationObj.getAddress());
 		tagline = locationObj.getTagline();
 		locationId = locationObj.getLocationId();
-		publicId = locationObj.getPublicId();
 	}
 	
 	public String getName() {
@@ -39,7 +38,7 @@ public class PlacesSearchMatch {
 	}
 
 	public String getPublicId() {
-		return publicId;
+		return Constants.publicIdString(getName());
 	}
 	
 	public int getReviewsCount() {

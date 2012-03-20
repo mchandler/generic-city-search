@@ -9,13 +9,13 @@ import com.citygrid.CityGrid;
 import com.citygrid.content.places.detail.CGPlacesDetail;
 import com.citygrid.content.places.detail.CGPlacesDetailLocation;
 import com.citygrid.content.places.detail.CGPlacesDetailResults;
+import com.rmwebfx.citygridsearch.config.Constants;
 
 public class Place extends RemoteResource {
 	
 	private CGPlacesDetailLocation locationObj;
 	
 	private int locationId;
-	private String publicId;
 	private String name;
 	private PlaceAddress address;
 	private String phone;
@@ -45,7 +45,6 @@ public class Place extends RemoteResource {
 		this.locationObj = locationObj;
 		
 		name = locationObj.getName();
-		publicId = locationObj.getPublicId();
 		phone = locationObj.getPhone();
 		businessHours = locationObj.getBusinessHours();
 		reviewCount = locationObj.getReviews().getCount();
@@ -63,7 +62,7 @@ public class Place extends RemoteResource {
 	}
 	
 	public String getPublicId() {
-		return publicId;
+		return Constants.publicIdString(getName());
 	}
 
 	public String getName() {

@@ -17,7 +17,6 @@ public class PlacesController {
 		
 		Place place = new Place(locationId);
 		model.addAttribute("locationName", place.getName());
-		model.addAttribute("publicId", place.getPublicId()); //TODO: remove this
 		model.addAttribute("reviews", place.getReviews());
 		
 		return "place";
