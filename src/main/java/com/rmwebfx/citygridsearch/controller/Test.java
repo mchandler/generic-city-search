@@ -12,7 +12,7 @@ public class Test {
 	
 	@RequestMapping(value = "/")
 	public ModelAndView home() {
-		PlacesSearch search = new PlacesSearch("Restaurant", Constants.SITEWIDE_CITY_STATE);
+		PlacesSearch search = new PlacesSearch("Restaurant", Constants.SITEWIDE_CITY_STATE, "");
 		
 		ModelAndView view = new ModelAndView();
 		view.setViewName("home");
