@@ -1,7 +1,7 @@
 package com.rmwebfx.citygridsearch.resources;
 
 import com.citygrid.content.places.search.CGPlacesSearchLocation;
-import com.rmwebfx.citygridsearch.config.Constants;
+import com.rmwebfx.citygridsearch.helper.StringHelper;
 
 public class PlacesSearchMatch {
 	
@@ -38,7 +38,7 @@ public class PlacesSearchMatch {
 	}
 
 	public String getPublicId() {
-		return Constants.publicIdString(getName());
+		return StringHelper.publicIdString(getName());
 	}
 	
 	public int getReviewsCount() {
