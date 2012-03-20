@@ -1,9 +1,9 @@
 package com.rmwebfx.citygridsearch.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.rmwebfx.citygridsearch.resources.Place;
 
@@ -11,15 +11,17 @@ import com.rmwebfx.citygridsearch.resources.Place;
 public class PlacesController {
 	
 	@RequestMapping(value = "/places/{locationId}/{publicId}")
-	public String getPlace(@PathVariable("locationId") int locationId,
-			@PathVariable("publicId") String publicId,
-			Model model) {
+	public ModelAndView getPlace(@PathVariable("locationId") int locationId,
+			@PathVariable("publicId") String publicId) {
+		
+		ModelAndView view = new ModelAndView();
+		view.setViewName("place");
 		
 		Place place = new Place(locationId);
-		model.addAttribute("locationName", place.getName());
-		model.addAttribute("reviews", place.getReviews());
+		view.addObject("locationName", place.getName());
+		view.addObject("reviews", place.getReviews());
 		
-		return "place";
+		return view;
 	}
 	
 }
