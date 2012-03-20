@@ -9,7 +9,6 @@
     </head>
     <body>
         <h1>Search Results</h1>
-        
         <% 
         	ArrayList<PlacesSearchMatch> matches = (ArrayList<PlacesSearchMatch>) request.getAttribute("matches");
         	for (int i = 0; i < matches.size(); i++) {
