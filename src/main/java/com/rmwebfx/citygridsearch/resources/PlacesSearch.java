@@ -18,12 +18,13 @@ public class PlacesSearch extends RemoteResource {
 	private int page;
 	private int resultsPerPage;
 	
-	public PlacesSearch(String searchType, String where, String what) {
+	public PlacesSearch(String searchType, String where, String what, int page) {
 		super();
 		
 		CGPlacesSearch search = CityGrid.placesSearch();
 	    search.setType(CGPlacesSearchType.Restaurant); // TODO: Handle search types
 	    search.setWhere(where);
+	    search.setPage(page);
 	    
 	    if (what.trim().length() > 0) {
 	    	search.setWhat(what);
@@ -69,5 +70,10 @@ public class PlacesSearch extends RemoteResource {
 	
 	public int getResultsPerPage() {
 		return resultsPerPage;
+	}
+	
+	public int getTotalPages() {
+		float totalPages = (float) getTotalHits() / getResultsPerPage();
+		return Math.round(totalPages);
 	}
 }
