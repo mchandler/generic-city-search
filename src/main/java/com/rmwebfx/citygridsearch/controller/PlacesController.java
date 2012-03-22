@@ -18,8 +18,7 @@ public class PlacesController {
 		view.setViewName("place");
 		
 		Place place = new Place(locationId);
-		view.addObject("locationName", place.getName());
-		view.addObject("reviews", place.getReviews());
+		view.addObject("place", place);
 		
 		return view;
 	}

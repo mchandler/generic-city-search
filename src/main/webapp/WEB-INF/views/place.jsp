@@ -1,8 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
-<%@ page import="com.rmwebfx.citygridsearch.resources.Review" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
 <html>
     <head>
         <title>Place</title>
@@ -10,12 +7,17 @@
     <body>
         <h1>Place Details</h1>
         
-        <h4><c:out value="${locationName}"></c:out></h4>
+        <h4><c:out value="${place.getName()}"></c:out></h4>
         
-        <%
-        	List<Review> reviews = (ArrayList<Review>) request.getAttribute("reviews");
-        %>
+        <p><c:out value="${place.getAddress().getStreet()}" /><br/>
+        <c:out value="${place.getAddress().getCity()}" />, <c:out value="${place.getAddress().getState()}" /> <c:out value="${place.getAddress().getPostal()}" /><br />
+        <c:out value="${place.getPhone()}" /></p>
         
-        <p><b><%= reviews.get(0).getTitle() %></b><br/><%= reviews.get(0).getText() %></p>
+        <h5>Reviews</h5>
+        
+        <c:forEach var="review" items="${place.getReviews()}">
+        	<b><c:out value="${review.getTitle()}" /></b><br />
+        	<c:out value="${review.getText()}"></c:out><br /><br />
+        </c:forEach>
     </body>
 </html>
