@@ -9,6 +9,7 @@ import com.citygrid.CityGrid;
 import com.citygrid.content.places.detail.CGPlacesDetail;
 import com.citygrid.content.places.detail.CGPlacesDetailLocation;
 import com.citygrid.content.places.detail.CGPlacesDetailResults;
+import com.rmwebfx.citygridsearch.config.Constants;
 import com.rmwebfx.citygridsearch.helper.StringHelper;
 
 public class Place extends RemoteResource {
@@ -32,6 +33,8 @@ public class Place extends RemoteResource {
 		
 		CGPlacesDetail detail = CityGrid.placesDetail();
 		detail.setLocationId(locationId);
+		
+		detail.setReviewCount(Constants.REVIEWS_COUNT_PER_PLACE);
 		
 		try {
 			CGPlacesDetailResults results = detail.detail();
