@@ -40,7 +40,7 @@ public class Place extends RemoteResource {
 			CGPlacesDetailResults results = detail.detail();
 			initializeByLocationObj(results.getLocation());
 		} catch (CGException e) {
-			// TODO: Handle failures
+			name = e.getMessage();
 		}
 	}
 
