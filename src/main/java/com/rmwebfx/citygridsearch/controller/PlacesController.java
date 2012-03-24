@@ -19,6 +19,7 @@ public class PlacesController {
 		
 		Place place = new Place(locationId);
 		view.addObject("place", place);
+		view.addObject("totalReviews", place.getReviewCount());
 		
 		return view;
 	}
