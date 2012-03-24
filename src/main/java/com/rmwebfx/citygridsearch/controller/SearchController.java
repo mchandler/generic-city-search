@@ -11,13 +11,13 @@ import com.rmwebfx.citygridsearch.resources.PlacesSearch;
 @Controller
 public class SearchController {
 	
-	@RequestMapping(value = "/category_results.html")
-	public ModelAndView getPlace(@RequestParam("page") int page) {
+	@RequestMapping(value = "/categorysearch.do")
+	public ModelAndView getPlace(@RequestParam("cat") int categoryId, @RequestParam("page") int page) {
 		
 		ModelAndView view = new ModelAndView();
 		view.setViewName("category_results");
 		
-		PlacesSearch search = new PlacesSearch("Restaurant", Constants.SITEWIDE_CITY_STATE, "", page);
+		PlacesSearch search = new PlacesSearch(categoryId, Constants.SITEWIDE_CITY_STATE, "", page);
 		view.addObject("matches", search.getPlaces());
 		
 		return view;

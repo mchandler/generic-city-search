@@ -13,7 +13,7 @@
         <c:out value="${place.getAddress().getCity()}" />, <c:out value="${place.getAddress().getState()}" /> <c:out value="${place.getAddress().getPostal()}" /><br />
         <c:out value="${place.getPhone()}" /></p>
         
-        <h5>Reviews</h5>
+        <h5>Reviews (<c:out value="${totalReviews}" />)</h5>
         
         <c:forEach var="review" items="${place.getReviews()}">
         	<b><c:out value="${review.getTitle()}" /></b><br />

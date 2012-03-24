@@ -10,6 +10,7 @@ import com.citygrid.content.places.search.CGPlacesSearchLocation;
 import com.citygrid.content.places.search.CGPlacesSearchResults;
 import com.citygrid.content.places.search.CGPlacesSearchType;
 import com.rmwebfx.citygridsearch.config.Constants;
+import com.rmwebfx.citygridsearch.helper.CategoryHelper;
 
 public class PlacesSearch extends RemoteResource {
 	
@@ -18,11 +19,11 @@ public class PlacesSearch extends RemoteResource {
 	private int page;
 	private int resultsPerPage;
 	
-	public PlacesSearch(String searchType, String where, String what, int page) {
+	public PlacesSearch(int categoryId, String where, String what, int page) {
 		super();
 		
 		CGPlacesSearch search = CityGrid.placesSearch();
-	    search.setType(CGPlacesSearchType.Restaurant); // TODO: Handle search types
+	    search.setType(CategoryHelper.category(categoryId)); // TODO: Handle search types
 	    search.setWhere(where);
 	    search.setPage(page);
 	    
