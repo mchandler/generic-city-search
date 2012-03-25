@@ -43,4 +43,8 @@ public class PlaceReviews extends RemoteResource {
 		}
 	}
 	
+	public List<SearchReview> getReviews() {
+		return reviews;
+	}
+	
 }
