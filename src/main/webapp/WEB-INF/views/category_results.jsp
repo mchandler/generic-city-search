@@ -12,5 +12,7 @@
         	<c:out value="${match.getCategories()}" /><br />
         	<c:out value="${match.getAddress().toString()}" /><br /><br />
         </c:forEach>
+        
+        <p><i>(total pages: <c:out value="${totalPages}"></c:out> total matches: <c:out value="${totalMatches}"></c:out>)</i></p>
     </body>
 </html>
