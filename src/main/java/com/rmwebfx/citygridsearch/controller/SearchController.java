@@ -37,6 +37,8 @@ public class SearchController {
 		
 		PlacesSearch search = new PlacesSearch(categoryId, Constants.SITEWIDE_CITY_STATE, "", page);
 		view.addObject("matches", search.getPlaces());
+		view.addObject("totalPages", search.getTotalPages());
+		view.addObject("totalMatches", search.getTotalHits());
 		
 		return view;
 	}

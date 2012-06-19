@@ -45,6 +45,10 @@ public class PlacesSearchMatch {
 		return locationObj.getReviews();
 	}
 	
+	public int getRating() {
+		return locationObj.getRating();
+	}
+	
 	public String getImage() {
 		return locationObj.getImage().toString();
 	}

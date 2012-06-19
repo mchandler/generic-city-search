@@ -94,6 +94,10 @@ public class Place extends RemoteResource {
 		return reviewCount;
 	}
 	
+	public int getRating() {
+		return locationObj.getRating();
+	}
+	
 	public String getWebsite() {
 		if (locationObj.getUrls().getWebsite() == null) {
 			return "";
