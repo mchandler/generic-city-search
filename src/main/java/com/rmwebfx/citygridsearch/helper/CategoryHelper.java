@@ -48,4 +48,32 @@ public class CategoryHelper {
 		return catType;
 	}
 	
+	public static int getCategory(String category) {
+		if (category.toLowerCase().equals("barclub")) {
+			return 1;
+		}
+		
+		if (category.toLowerCase().equals("hotel")) {
+			return 2;
+		}
+		
+		if (category.toLowerCase().equals("restaurant")) {
+			return 5;
+		}
+		
+		if (category.toLowerCase().equals("shopping")) {
+			return 6;
+		}
+		
+		if (category.toLowerCase().equals("spabeauty")) {
+			return 7;
+		}
+		
+		if (category.toLowerCase().equals("travel")) {
+			return 8;
+		}
+		
+		return 5;
+	}
+	
 }
