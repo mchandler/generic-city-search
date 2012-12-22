@@ -1,0 +1,553 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* To Reset Default Browser Styles */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent; font-family: Arial, Helvetica, sans-serif;}body{line-height:1}ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outline:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+/*Font embedding*/
+
+@font-face {  
+  font-family: "Segoe WP", "Segoe UI", Helvetica, Calibri;
+  src: url(../fonts/SegoeWP.ttf); /* IE */  
+  src: local("SegoeWP"), url(/fonts/SegoeWP.ttf) format("truetype"); /* non-IE */  
+  font-style: normal;
+  font-weight: normal;
+}  
+
+/* THEN use like you would any other font */  
+.font_segoe { font-family:"Segoe WP", "Segoe UI", Calibri, Arial;
+}
+/*****************************************/
+
+@font-face {  
+  font-family: "Segoe wpc";
+  src: url(../fonts/segoewpc.ttf); /* IE */  
+  src: local("segoewpc"), url(../fonts/segoewpc.ttf) format("truetype"); /* non-IE */
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* THEN use like you would any other font */  
+.font_segeoWPC { 
+	font-family:"Segoe wpc","Segoe UI Light",Helvetica,Arial,Sans-Serif;
+}
+
+/*****************************************/
+
+@font-face {  
+  font-family: "SegoeWP-Semibold";
+  src: url(../fonts/SegoeWP-Semibold.ttf); /* IE */  
+  src: local("SegoeWP-Semibold"), url(../fonts/SegoeWP-Semibold.ttf) format("truetype"); /* non-IE */  
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* THEN use like you would any other font */  
+.font_segeoWPC_semibold { font-family:"SegoeWP-Semibold", Arial-Black, Calibri;
+}
+
+/*****************************************/
+
+@font-face {  
+  font-family: "SegoeWP-Bold";
+  src: url(../fonts/SegoeWP-Bold.ttf); /* IE */  
+  src: local("SegoeWP-Bold"), url(../fonts/SegoeWP-Bold.ttf) format("truetype"); /* non-IE */  
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* THEN use like you would any other font */  
+.font_segeoWPC_bold { font-family:"SegoeWP-Bold", Arial-Black, Calibri;
+}
+
+
+
+/*Main Layout*/
+
+body{
+	background-color:#fff;
+}
+
+.wrapper
+{
+	margin-left:auto;
+	margin-right:auto;
+	width:980px;
+}
+
+#header
+{
+	background-color:#008fc6;
+	height:135px;
+}
+
+#header img
+{
+	margin:30px 0px 0px 25px;
+	float:left;
+}
+
+#header div.search
+{
+}
+
+#header div.search input
+{
+	border:none;
+	height:8px;
+	width:180px;
+	margin:13px 0px 0px 250px;
+	padding:10px;
+	font-family: "Segoe WP", "Segoe UI", Helvetica, Calibri;
+	font-style:italic;
+	color:#CCC;
+	font-size:14px;
+}
+
+#header div.search button
+{
+	background:url(../images/btnGo.png) no-repeat transparent;
+	height:29px;
+	width:29px;
+	border:none;
+	padding-top:15px;
+	margin:0px 0px 0px 4px;
+	cursor:pointer;
+}
+
+#header div.login
+{
+	background:url(../images/btnLogin_bg.png) no-repeat;
+	height:64px;
+	width:75px;
+	padding:10px 0px 0px 65px;
+	margin:18px 80px 0px 0px;
+	float:right;
+}
+
+#header div.join
+{
+	background:url(../images/btnjoin_bg.png) no-repeat;
+	height:48px;
+	width:75px;
+	margin:34px -30px 0px 0px;
+	padding:10px 0px 0px 65px;
+	float:right;
+}
+
+#header div a
+{
+	font-family:"SegoeWP-Semibold", Arial-Black, Calibri;
+	font-size:16px;
+	color:#FFF;
+	text-decoration:none;
+}
+
+#header div a:hover
+{
+	text-decoration:underline;
+}
+
+#nav
+{
+	background:url(../images/nav_bg.jpg) repeat-x;
+	height:54px;
+}
+
+#nav ul
+{
+	margin:0px 0px 0px 25px;
+	text-align:center;
+}
+
+#nav li
+{
+	float:left;
+}
+
+#nav a
+{
+	font-family: "Segoe WP", "Segoe UI", Helvetica, Calibri;
+	color:#fff;
+	text-decoration:none;
+	font-size:16px;
+	padding:19px 11px;
+	display:block;
+}
+
+#nav a:hover
+{
+	background:url(../images/nav_bg_hover.jpg) repeat-x;
+}
+
+#content
+{
+	margin:20px 20px;
+}
+
+#footer
+{
+	background:url(../images/footer_bg.jpg) bottom repeat-x #066591;
+	height:140px;
+	padding:0px 10px;
+}
+
+#footer ul li
+{
+	float:left;
+	margin:10px 0px 0px 15px;
+	color:#fff;
+}
+
+#footer ul li a
+{
+	color:#fff;
+	font-size:14px;
+	font-family: "Segoe WP", "Segoe UI", Helvetica, Calibri;
+	font-style:italic;
+	text-decoration:none;
+}
+
+#footer ul li a:hover
+{
+	text-decoration:underline;
+}
+
+#footer div.social
+{
+	float:right;
+	margin:60px 30px 0px 0px;
+}
+
+#footer div.social img
+{
+	margin:0px 5px -5px 20px;
+}
+
+#footer div.social a
+{
+	color:#fff;
+	font-size:14px;
+	font-family: "Segoe WP", "Segoe UI", Helvetica, Calibri;
+	text-decoration:none;
+}
+
+#footer div.social a:hover
+{
+	color:#d3eaf4;
+}
+
+
+#footer p
+{
+	color:#828282;
+	font-size:12px;
+	font-family: "Segoe WP", "Segoe UI", Helvetica, Calibri;
+	text-decoration:none;
+	text-align:center;
+	margin:20px 0px 0px 150px;
+	float:left;
+	line-height:18px;
+}
+
+#footer p a
+{
+	color:#828282;
+	font-size:12px;
+	font-family: "Segoe WP", "Segoe UI", Helvetica, Calibri;
+	text-decoration:none;
+}
+
+/* content starts here */
+
+#col_left
+{
+	float:left;
+	width:610px;
+}
+
+#col_left h2
+{
+	font-size:30px;
+	color:#000;
+	float:left;
+	font-family:"SegoeWP-Bold", Arial-Black, Calibri;
+	font-weight:100;
+}
+
+#col_left h5
+{
+	float:left;
+	font-size:18px;
+	color:#000;
+	font-family:"SegoeWP-Semibold", Arial-Black, Calibri;
+	margin:12px 0px 20px 30px;
+	font-weight:100;
+}
+
+#slide
+{
+	height:170px;
+	background-color:#f2f2f2;
+}
+
+div.subcate
+{
+	width:132px;
+	float:left;
+	margin:40px 27px 50px 0px;
+}
+
+div.subcate h4
+{
+	font-weight:100;
+	font-family: "Segoe WP", "Segoe UI", Helvetica, Calibri;
+	font-size:20px;
+	color:#333;
+	margin:10px 0px 10px 0px;
+}
+
+div.subcate p, div.reviews p
+{
+	font-family: "Segoe WP", "Segoe UI", Helvetica, Calibri;
+	color:#666;
+	line-height:18px;
+	font-size:13px;
+}
+
+div.subcate a, div.reviews a
+{
+	font-family: "Segoe WP", "Segoe UI", Helvetica, Calibri;
+	color:#666;
+	line-height:18px;
+	font-size:13px;
+	text-decoration:none;
+}
+
+div.subcate a:hover, div.reviews a:hover
+{
+	text-decoration:underline;
+}
+
+#col_left h3
+{
+	color:#000;
+	font-size:24px;
+	margin:40px 0px 20px 0px;
+}
+
+div.line
+{
+	height:1px;
+	width:100%;
+	background-color:#CCC;
+}
+
+div.reviews
+{
+	width:290px;
+	float:left;
+	margin:0px 30px 30px 0px;
+}
+
+div.reviews h6
+{
+	font-family:"SegoeWP-Semibold", Arial-Black, Calibri;
+	color:#008ec5;
+	line-height:18px;
+	font-size:14px;
+	font-weight:100;
+}
+
+div.reviews #reviews_star
+{
+	float:right;
+	margin:-17px 0px 0px 0px;
+}
+
+a.title:hover
+{
+	text-decoration:none;
+}
+
+div.reviews a
+{
+	color:#008ec5;
+}
+
+
+
+#col_right
+{
+	width:300px;
+	float:right;
+}
+
+#col_right img
+{
+	margin:0px 0px 20px 0px;
+}
+
+#col_right h3
+{
+	color:#000;
+	font-size:24px;
+	font-family: "Segoe WP", "Segoe UI", Helvetica, Calibri;
+}
+
+#col_right h5
+{
+	color:#008ec5;
+	font-family:"SegoeWP-Semibold", Arial-Black, Calibri;
+	font-size:18px;
+	font-weight:100;
+	text-transform:none;
+	padding:7px 0px 5px 0px;
+}
+
+div.local
+{
+	margin:20px 0px 0px 0px;
+	clear:both;
+	height:72px;
+}
+
+div.local img
+{
+	float:left;
+	padding:5px 10px 20px 0px;
+}
+
+div.local p
+{
+	font-family: "Segoe WP", "Segoe UI", Helvetica, Calibri;
+	font-size:14px;
+	color:#666;
+}
+
+div.local a
+{
+	font-family: "Segoe WP", "Segoe UI", Helvetica, Calibri;
+	color:#008ec5;
+	font-size:10px;
+	text-transform:uppercase;
+	text-decoration:none;
+}
+
+img.ad3
+{
+	margin:0px 0px 0px 100px;
+}
+
+/************* slideshow *************/
+#carousel {
+	width:610px;
+	height:170px;
+	overflow:hidden;
+}
+
+#slides {
+	overflow:hidden;
+	/* fix ie overflow issue */
+	position:relative;
+	width:520px;
+	height:170px;
+	float:left;
+}
+
+div#slides li h4
+{
+	font-weight:100;
+	font-family: "Segoe WP", "Segoe UI", Helvetica, Calibri;
+	font-size:20px;
+	color:#008ec5;
+	margin:20px 0px 10px 0px;
+}
+
+div#slides li a
+{
+	font-family: "Segoe WP", "Segoe UI", Helvetica, Calibri;
+	text-decoration:none;
+	color:#008ec5;
+}
+
+div#slides li p
+{
+	font-family: "Segoe WP", "Segoe UI", Helvetica, Calibri;
+	font-size:13px;
+	color:#666;
+	line-height:17px;
+	text-transform:uppercase;
+	margin:10px 0px 0px 0px;
+}
+
+div#slides li h6
+{
+	font-family: "Segoe WP", "Segoe UI", Helvetica, Calibri;
+	font-size:13px;
+	font-weight:100;
+	color:#b3b3b3;
+	display:inline-block;
+	margin:1px 0px 0px 15px;
+}
+
+/* remove the list styles, width : item width * total items */	
+#slides ul {
+	position:relative;
+	left:0;
+	top:0;
+	list-style:none;
+	margin:0;
+	padding:0;	
+	width:1560px;			
+}
+
+/* width of the item, in this case I put 250x250x gif */
+#slides li {
+	width:520px;
+	height:170px;	
+	float:left;
+}
+
+#slides li img {
+	float:left;
+	margin:0px 40px 0px 0px;
+}
+
+/* Styling for prev and next buttons */
+#buttons {
+	float:right;
+	margin:140px 0px 10px 0px;
+}
+
+#buttons a {
+	display:block; 
+	width:30px; 
+	height:30px;
+	text-indent:-999em;
+	float:left;
+	outline:0;
+}
+
+a#prev {
+	background:url(../images/slidearrow.jpg) 0px 0px no-repeat; 
+}
+
+a#prev:hover {
+	background:url(../images/slidearrow.jpg) 0 -30px no-repeat;
+}
+
+a#next {
+	background:url(../images/slidearrow.jpg) -30px 0px no-repeat; 
+}
+
+a#next:hover {
+	background:url(../images/slidearrow.jpg) -30px -30px no-repeat;
+}
+
+.clear {clear:both}
+
+
+
+
+

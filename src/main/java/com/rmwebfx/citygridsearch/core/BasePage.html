@@ -1,0 +1,347 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>simivalleylife.com</title>
+<wicket:head>
+	<wicket:link>
+		<link wicket:id="stylecss" rel="Stylesheet" type="text/css" href="/css/style.css"/>
+	</wicket:link>
+</wicket:head>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+
+	<!--Rating control -->
+<!--// plugin-specific resources //-->
+<script src='js/rating/jquery.MetaData.js' type="text/javascript" language="javascript"></script>
+<script src='js/rating/jquery.rating.js' type="text/javascript" language="javascript"></script>
+
+	<!--Rating control ends-->
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+	//rotation speed and timer
+	var speed = 5000;
+	var run = setInterval('rotate()', speed);	
+	
+	//grab the width and calculate left value
+	var item_width = $('#slides li').outerWidth(); 
+	var left_value = item_width * (-1); 
+        
+    //move the last item before first item, just in case user click prev button
+	$('#slides li:first').before($('#slides li:last'));
+	
+	//set the default item to the correct position 
+	$('#slides ul').css({'left' : left_value});
+
+    //if user clicked on prev button
+	$('#prev').click(function() {
+
+		//get the right position            
+		var left_indent = parseInt($('#slides ul').css('left')) + item_width;
+
+		//slide the item            
+		$('#slides ul:not(:animated)').animate({'left' : left_indent}, 200,function(){    
+
+            //move the last item and put it as first item            	
+			$('#slides li:first').before($('#slides li:last'));           
+
+			//set the default item to correct position
+			$('#slides ul').css({'left' : left_value});
+		
+		});
+
+		//cancel the link behavior            
+		return false;
+            
+	});
+
+ 
+    //if user clicked on next button
+	$('#next').click(function() {
+		
+		//get the right position
+		var left_indent = parseInt($('#slides ul').css('left')) - item_width;
+		
+		//slide the item
+		$('#slides ul:not(:animated)').animate({'left' : left_indent}, 200, function () {
+            
+            //move the first item and put it as last item
+			$('#slides li:last').after($('#slides li:first'));                 	
+			
+			//set the default item to correct position
+			$('#slides ul').css({'left' : left_value});
+		
+		});
+		         
+		//cancel the link behavior
+		return false;
+		
+	});        
+	
+	//if mouse hover, pause the auto rotation, otherwise rotate it
+	$('#slides').hover(
+		
+		function() {
+			clearInterval(run);
+		}, 
+		function() {
+			run = setInterval('rotate()', speed);	
+		}
+	); 
+        
+});
+
+//a simple function to click next link
+//a timer will call this function, and the rotation will begin :)  
+function rotate() {
+	$('#next').click();
+} 
+        
+</script>
+
+</head>
+
+<body>
+
+	<div class="wrapper">
+    	<div id="header">
+        	<a href="index.html"><img src="images/logo.png" alt="simivalleylife.com" /></a>
+            <div class="search">
+            <input id="btnGo" type="text" value="What ?" onfocus="if(this.value=='What ?')this.value='';" onblur="if(this.value=='')this.value='What ?';">
+                <button type="button"></button>
+            </div>
+            
+            <div class="login">
+            	<a href="#">Login</a>
+            </div>
+            
+            <div class="join">
+            	<a href="#">Join</a>
+            </div>
+        </div>
+        
+        <div id="nav">
+        	<ul>
+                <li><a href="#">Main</a></li>
+                <li><a href="#">Restaurants</a></li>
+                <li><a href="#">Bars & Nightlife</a></li>
+                <li><a href="#">Spa & Beauty</a></li>
+                <li><a href="#">Sports & Recreation</a></li>
+                <li><a href="#">Entertainment</a></li>
+                <li><a href="#">Shopping</a></li>
+                <li><a href="#">Deals</a></li>
+                <li><a href="#">More &nbsp;<img src="images/more_arrow.png" alt="" /></a></li>
+            </ul>
+        </div>
+        
+        <div id="content">
+        	
+        	<wicket:child />
+        	
+        	<!-- <div id="col_left">
+            	<h2>Favorites</h2>
+                <h5>Hand-picked by Expert Editors!</h5>
+                <br clear="all" />
+				
+                <div id="slide">
+					<div id="carousel">
+                        <div id="slides"> 
+                            <ul>
+                                <li>
+                                	<img src="images/slideimg.jpg" alt="Slide 1" />
+                                    <a href="#"><h4>Sew Fast Sew Easy Inc</h4></a>
+                                    <div>
+                                    	<input id="rate1" name="adv1" type="radio" class="star {split:2} star-rating-on" disabled="disabled"/>
+                                        <input id="rate2" name="adv1" type="radio" class="star {split:2} star-rating-on" disabled="disabled"/>
+                                        <input id="rate3" name="adv1" type="radio" class="star {split:2} star-rating-on" disabled="disabled"/>
+                                        <input id="rate4" name="adv1" type="radio" class="star {split:2} star-rating-on" disabled="disabled"/> 
+                                        <input id="rate5" name="adv1" type="radio" class="star {split:2} star-rating-on" disabled="disabled"/>
+                                        <input id="rate6" name="adv1" type="radio" class="star {split:2} star-rating-on" disabled="disabled"/>
+                                        <input id="rate7" name="adv1" type="radio" class="star {split:2} star-rating-on" disabled="disabled"/>   
+                                        <input id="rate8" name="adv1" type="radio" class="star {split:2} star-rating-on" disabled="disabled"/>   
+                                        <input id="rate9" name="adv1" type="radio" class="star {split:2} star-rating-on" disabled="disabled"/>   
+                                        <input id="rate10" name="adv1" type="radio" class="star {split:2}" disabled="disabled"/>  
+                                    </div>
+                                    <h6>20 reviews</h6>
+                                    <p>977 2ND AVE <br /> NEW YORK, NY <br /><a href="#">MAP & DIRECTIONS</a></p>
+                                </li>
+                                
+                                <li>
+                                	<img src="images/slideimg.jpg" alt="Slide 1"/>
+                                    <a href="#"><h4>Sew Fast Sew Easy Inc</h4></a>
+                                    <div>
+                                    	<input id="rate1" name="adv2" type="radio" class="star {split:2} star-rating-on" disabled="disabled"/>
+                                        <input id="rate2" name="adv2" type="radio" class="star {split:2} star-rating-on" disabled="disabled"/>
+                                        <input id="rate3" name="adv2" type="radio" class="star {split:2} star-rating-on" disabled="disabled"/>
+                                        <input id="rate4" name="adv2" type="radio" class="star {split:2} star-rating-on" disabled="disabled"/> 
+                                        <input id="rate5" name="adv2" type="radio" class="star {split:2} star-rating-on" disabled="disabled"/>
+                                        <input id="rate6" name="adv2" type="radio" class="star {split:2} star-rating-on" disabled="disabled"/>
+                                        <input id="rate7" name="adv2" type="radio" class="star {split:2} star-rating-on" disabled="disabled"/>   
+                                        <input id="rate8" name="adv2" type="radio" class="star {split:2}" disabled="disabled"/>   
+                                        <input id="rate9" name="adv2" type="radio" class="star {split:2}" disabled="disabled"/>   
+                                        <input id="rate10" name="adv2" type="radio" class="star {split:2}" disabled="disabled"/>  
+                                    </div>
+                                    <h6>20 reviews</h6>
+                                    <p>977 2ND AVE <br /> NEW YORK, NY <br /><a href="#">MAP & DIRECTIONS</a></p>
+                                </li>
+                                
+                                <li>
+                                	<img src="images/slideimg.jpg" alt="Slide 1"/>
+                                    <a href="#"><h4>Sew Fast Sew Easy Inc</h4></a>
+                                    <div>
+                                    	<input id="rate1" name="adv3" type="radio" class="star {split:2} star-rating-on" disabled="disabled"/>
+                                        <input id="rate2" name="adv3" type="radio" class="star {split:2} star-rating-on" disabled="disabled"/>
+                                        <input id="rate3" name="adv3" type="radio" class="star {split:2} star-rating-on" disabled="disabled"/>
+                                        <input id="rate4" name="adv3" type="radio" class="star {split:2} star-rating-on" disabled="disabled"/> 
+                                        <input id="rate5" name="adv3" type="radio" class="star {split:2} star-rating-on" disabled="disabled"/>
+                                        <input id="rate6" name="adv3" type="radio" class="star {split:2} star-rating-on" disabled="disabled"/>
+                                        <input id="rate7" name="adv3" type="radio" class="star {split:2} star-rating-on" disabled="disabled"/>   
+                                        <input id="rate8" name="adv3" type="radio" class="star {split:2} star-rating-on" disabled="disabled"/>   
+                                        <input id="rate9" name="adv3" type="radio" class="star {split:2}" disabled="disabled"/>   
+                                        <input id="rate10" name="adv3" type="radio" class="star {split:2}" disabled="disabled"/>  
+                                    </div>
+                                    <h6>20 reviews</h6>
+                                    <p>977 2ND AVE <br /> NEW YORK, NY <br /><a href="#">MAP & DIRECTIONS</a></p>
+                                </li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                        <div id="buttons">
+                            <a href="#" id="prev">prev</a>
+                            <a href="#" id="next">next</a>
+                            <div class="clear"></div>
+                        </div>                    
+                    </div>
+                </div>
+                
+                <div class="subcate">
+                	<img src="images/shopping1.jpg" alt="" />
+                    <h4>Shopping</h4>
+                    <p>Clothing Jewelry & Watches Bookstores Toys & Games</p>
+                    <a href="#">More... </a>
+                </div>
+                <div class="subcate">
+                	<img src="images/shopping1.jpg" alt="" />
+                    <h4>Shopping</h4>
+                    <p>Clothing Jewelry & Watches Bookstores Toys & Games</p>
+                    <a href="#">More... </a>
+                </div>
+                <div class="subcate">
+                	<img src="images/shopping1.jpg" alt="" />
+                    <h4>Shopping</h4>
+                    <p>Clothing Jewelry & Watches Bookstores Toys & Games</p>
+                    <a href="#">More... </a>
+                </div>
+                <div class="subcate" style="margin-right:0px;">
+                	<img src="images/shopping1.jpg" alt="" />
+                    <h4>Shopping</h4>
+                    <p>Clothing Jewelry & Watches Bookstores Toys & Games</p>
+                    <a href="#">More... </a>
+                </div>
+                
+                <br clear="all" />
+                <div class="line"></div>
+                
+                <h3>Reviews Near You</h3>
+                <div class="reviews">
+                	<a class="title" href="#"><h6>The Shanoon</h6></a>
+                    <div id="reviews_star">
+                        <input id="rate1" name="adv4" type="radio" class="star star-rating-on" disabled="disabled"/>
+                        <input id="rate2" name="adv4" type="radio" class="star star-rating-on" disabled="disabled"/>
+                        <input id="rate3" name="adv4" type="radio" class="star star-rating-on" disabled="disabled"/>
+                        <input id="rate4" name="adv4" type="radio" class="star star-rating-on" disabled="disabled"/> 
+                        <input id="rate5" name="adv4" type="radio" class="star" disabled="disabled"/>
+                    </div>
+                    <p>The screens are nice and the seating is comfortable. I've never had to search for a seat ...</p>
+                    <a href="#">Read the full review</a>
+                </div>
+                <div class="reviews" style="margin-right:0px;">
+                	<a class="title" href="#"><h6>The Shanoon</h6></a>
+                    <div id="reviews_star">
+                        <input id="rate1" name="adv5" type="radio" class="star star-rating-on" disabled="disabled"/>
+                        <input id="rate2" name="adv5" type="radio" class="star star-rating-on" disabled="disabled"/>
+                        <input id="rate3" name="adv5" type="radio" class="star star-rating-on" disabled="disabled"/>
+                        <input id="rate4" name="adv5" type="radio" class="star star-rating-on" disabled="disabled"/> 
+                        <input id="rate5" name="adv5" type="radio" class="star" disabled="disabled"/>
+                    </div>
+                    <p>The screens are nice and the seating is comfortable. I've never had to search for a seat ...</p>
+                    <a href="#">Read the full review</a>
+                </div>
+                <div class="reviews">
+                	<a class="title" href="#"><h6>The Shanoon</h6></a>
+                    <div id="reviews_star">
+                        <input id="rate1" name="adv6" type="radio" class="star star-rating-on" disabled="disabled"/>
+                        <input id="rate2" name="adv6" type="radio" class="star star-rating-on" disabled="disabled"/>
+                        <input id="rate3" name="adv6" type="radio" class="star star-rating-on" disabled="disabled"/>
+                        <input id="rate4" name="adv6" type="radio" class="star star-rating-on" disabled="disabled"/> 
+                        <input id="rate5" name="adv6" type="radio" class="star" disabled="disabled"/>
+                    </div>
+                    <p>The screens are nice and the seating is comfortable. I've never had to search for a seat ...</p>
+                    <a href="#">Read the full review</a>
+                </div>
+                <div class="reviews" style="margin-right:0px;">
+                	<a class="title" href="#"><h6>The Shanoon</h6></a>
+                    <div id="reviews_star">
+                        <input id="rate1" name="adv7" type="radio" class="star star-rating-on" disabled="disabled"/>
+                        <input id="rate2" name="adv7" type="radio" class="star star-rating-on" disabled="disabled"/>
+                        <input id="rate3" name="adv7" type="radio" class="star star-rating-on" disabled="disabled"/>
+                        <input id="rate4" name="adv7" type="radio" class="star star-rating-on" disabled="disabled"/> 
+                        <input id="rate5" name="adv7" type="radio" class="star" disabled="disabled"/>
+                    </div>
+                    <p>The screens are nice and the seating is comfortable. I've never had to search for a seat ...</p>
+                    <a href="#">Read the full review</a>
+                </div>
+            </div> -->
+            
+            <!-- <div id="col_right">
+                <img src="images/ad1.gif" alt="" />
+                <img src="images/ad2.gif" alt="" />
+                
+                <h3>Local Restaurant Reviews</h3>
+                <div class="local">
+                	<img src="images/localrest.jpg" alt="" />
+                    <a href="#" class="title"><h5>Katra</h5></a>
+                    <p>New York, NY</p>
+                    <a href="#">read reviews</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href="#">view map</a>
+                </div>
+                <div class="local">
+                	<img src="images/localrest.jpg" alt="" />
+                    <a href="#" class="title"><h5>Katra</h5></a>
+                    <p>New York, NY</p>
+                    <a href="#">read reviews</a>&nbsp;&nbsp;<a>|</a>&nbsp;&nbsp;<a href="#">view map</a>
+                </div>
+            </div> -->
+            <br clear="all" /><br />
+            <img class="ad3" src="images/ad3.gif" alt="" />
+        </div>
+        
+        <div id="footer">
+        	<ul>
+            	<li><a href="#">Abouts</a></li>
+                <li>|</li>
+            	<li><a href="#">Directory</a></li>
+                <li>|</li>
+            	<li><a href="#">Join Simivallery</a></li>
+                <li>|</li>
+            	<li><a href="#">Contact</a></li>
+                <li>|</li>
+            	<li><a href="#">Terms</a></li>
+                <li>|</li>
+            	<li><a href="#">Privacy</a></li>
+            </ul>            
+            <div class="social">
+            	<a href="#"><img src="images/fb.png" alt="Facebook" />Facebook</a>
+            	<a href="#"><img src="images/tweet.png" alt="Facebook" />Twitter</a>
+            </div>
+            <br clear="all" />
+            <p>
+            	Copyright &copy; 2008-2011 simivalleylife.com. All Rights Reserved.<br />Some data in part by citygridemedia.com.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
