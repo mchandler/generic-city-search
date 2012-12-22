@@ -20,16 +20,6 @@
 	
 	<!-- Processes application requests -->
 	<servlet>
-		<servlet-name>citygridServlet</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/spring/citygridServlet/servlet-context.xml</param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
-	</servlet>		
-
-	<servlet>
 		<servlet-name>REST Services</servlet-name>
 		<servlet-class>
 			com.sun.jersey.spi.container.servlet.ServletContainer
@@ -40,11 +30,6 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>citygridServlet</servlet-name>
-		<url-pattern>/old/*</url-pattern>
-	</servlet-mapping>
 	
 	<servlet-mapping>
 		<servlet-name>REST Services</servlet-name>
