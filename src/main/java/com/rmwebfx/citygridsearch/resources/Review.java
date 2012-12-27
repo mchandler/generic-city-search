@@ -13,7 +13,7 @@ public class Review {
 	}
 	
 	public String getTitle() {
-		return reviewObj.getTitle();
+		return (reviewObj.getTitle() == null) ? "Place Review" : reviewObj.getTitle();
 	}
 	
 	public String getUrl() {

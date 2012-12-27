@@ -1,11 +1,18 @@
 package com.rmwebfx.citygridsearch.page;
 
+import java.util.List;
+
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.ExternalLink;
+import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.markup.html.list.ListItem;
+import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import com.rmwebfx.citygridsearch.core.BasePage;
 import com.rmwebfx.citygridsearch.resources.Place;
+import com.rmwebfx.citygridsearch.resources.Review;
 
 public class PlaceDetails extends BasePage{
 
@@ -34,6 +41,30 @@ public class PlaceDetails extends BasePage{
 		add(new Label("businessHours",place.getObject().getBusinessHours()));
 		add(new Label("totalReviews",new Integer(place.getObject().getReviewCount()).toString()));
 		
+		add(getAllReviews(place));
+		
+	}
+	
+	private ListView<Review> getAllReviews(LoadableDetachableModel<Place> place) {
+		List<Review> reviews = place.getObject().getReviews();
+		
+		ListView<Review> listView = new ListView<Review>("reviews", reviews){
+			
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void populateItem(ListItem<Review> item) {
+				Review review = item.getModelObject();
+				item.add(new ExternalLink("reviewLink", review.getUrl(), review.getTitle()));
+				item.add(new Label("reviewContent", review.getText()));
+				item.add(new Label("reviewDate",review.getDate().toString()));
+				//item.add(new Label("reviewRating", new Integer(review.getRating()).toString()));
+				//item.add(new Label("reviewHelpful", new Integer(review.getHelpful()).toString()));
+			}
+			
+		};
+		
+		return listView;
 	}
 
 }
