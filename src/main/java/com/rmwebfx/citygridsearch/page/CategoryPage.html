@@ -7,9 +7,9 @@
 <script type="text/javascript">
 	$(function() {
 		$("#pages").paginate({
-			count 		: 50,
-			start 		: 1,
-			display     : 12,
+			count 		: tp,
+			start 		: pageId,
+			display     : 10,
 			border					: false,
 			text_color  			: '#79B5E3',
 			background_color    	: 'none',	
@@ -18,7 +18,8 @@
 			images		: false,
 			mouse		: 'press',
 			onChange	: function(page) {
-				alert('New Page!');
+				var location = "/search/" + cat + "/" + page;
+				window.location = location;
 			}
 		});
 	});

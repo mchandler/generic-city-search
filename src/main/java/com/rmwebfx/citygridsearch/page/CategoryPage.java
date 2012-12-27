@@ -1,5 +1,7 @@
 package com.rmwebfx.citygridsearch.page;
 
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -17,18 +19,31 @@ public class CategoryPage extends BasePage {
 
 	private static final long serialVersionUID = 1L;
 	private int pageNumber = 1;
+	private String category = "restaurant";
 	private int categoryId = 1;
+	private int totalPages;
 	
 	public CategoryPage(PageParameters params) {
 		pageNumber = params.get("pageNumber").toInt();
 		categoryId = CategoryHelper.getCategory(params.get("category").toString());
+		category = params.get("category").toString();
 		
 		LoadableDetachableModel<PlacesSearch> places = loadPlaces();
+		totalPages = places.getObject().getTotalPages();
 		
 		PageableListView listView = loadListView(places);
 		
 		add(listView);
 		
+	}
+	
+	@Override
+	public void renderHead(IHeaderResponse response) {
+		super.renderHead(response);
+		
+		response.render(JavaScriptHeaderItem.forScript("var pageId = " + pageNumber + ";", "pageid"));
+		response.render(JavaScriptHeaderItem.forScript("var cat = '" + category + "';", "cat"));
+		response.render(JavaScriptHeaderItem.forScript("var tp = '" + totalPages + "';", "tp"));
 	}
 	
 	private LoadableDetachableModel<PlacesSearch> loadPlaces() {
