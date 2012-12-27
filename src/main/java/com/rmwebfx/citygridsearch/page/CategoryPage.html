@@ -2,12 +2,38 @@
 <html>
 <body>
 
+<wicket:head>
+<script src='js/jquery.paginate.js' type="text/javascript" language="javascript"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#pages").paginate({
+			count 		: 50,
+			start 		: 1,
+			display     : 12,
+			border					: false,
+			text_color  			: '#79B5E3',
+			background_color    	: 'none',	
+			text_hover_color  		: '#2573AF',
+			background_hover_color	: 'none', 
+			images		: false,
+			mouse		: 'press',
+			onChange	: function(page) {
+				alert('New Page!');
+			}
+		});
+	});
+</script>
+</wicket:head>
+
 <wicket:extend>
+
 <div wicket:id="results">
 	<div><a wicket:id="placeLink"><b><span wicket:id="placeName"></span></b></a><br />
 	<span wicket:id="categories"></span><br />
 	<span wicket:id="address"></span><br /><br /></div>
 </div>
+
+<div id="pages"></div>
 </wicket:extend>
 
 </body>
