@@ -2,6 +2,35 @@
 <html>
 <body>
 
+<wicket:head>
+	<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATCY0910G2A3P5QcrToukiKJQg79c2sUs&sensor=false">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+    	var myLatlng = new google.maps.LatLng(lat, lon);
+    	  
+    	var mapOptions = {
+          center: myLatlng,
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+            mapOptions);
+        var marker = new google.maps.Marker({
+        	position: myLatlng,
+        	map: map
+        });
+        
+      }
+      
+      $(document).ready(function() {
+    	  initialize();
+      });
+    </script>
+    
+</wicket:head>
+
 <wicket:extend>
 <h3 wicket:id="placeName"></h3>
 
@@ -19,6 +48,8 @@
 	<i>posted on <span wicket:id="reviewDate"></span><br />
 	<!-- <span wicket:id="reviewRating"></span> | <span wicket:id="reviewHelpful"></span> --></i></p>
 </div>
+
+<div id="map_canvas" style="width:300px; height:250px"></div>
 </wicket:extend>
 
 </body>
