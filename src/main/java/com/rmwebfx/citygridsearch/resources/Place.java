@@ -89,6 +89,22 @@ public class Place extends RemoteResource {
 		String lon = new Double(locationObj.getLatlon().getLongitude()).toString();
 		return lat + ", " + lon;
 	}
+	
+	public Double getLat() {
+		if (locationObj.getLatlon() == null) {
+			return null;
+		}
+		
+		return locationObj.getLatlon().getLatitude();
+	}
+	
+	public Double getLon() {
+		if (locationObj.getLatlon() == null) {
+			return null;
+		}
+		
+		return locationObj.getLatlon().getLongitude();
+	}
 
 	public int getReviewCount() {
 		return reviewCount;
