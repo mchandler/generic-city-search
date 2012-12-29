@@ -24,7 +24,7 @@ public class CategoryPage extends BasePage {
 	private int totalPages;
 	
 	public CategoryPage(PageParameters params) {
-		pageNumber = params.get("pageNumber").toInt();
+		pageNumber = (params.get("pageNumber").toString().length() == 0) ? 1 : params.get("pageNumber").toInt();
 		categoryId = CategoryHelper.getCategory(params.get("category").toString());
 		category = params.get("category").toString();
 		
@@ -33,6 +33,7 @@ public class CategoryPage extends BasePage {
 		
 		PageableListView listView = loadListView(places);
 		
+		add(new Label("catTitle",CategoryHelper.getCategoryString(categoryId)));
 		add(listView);
 		
 	}

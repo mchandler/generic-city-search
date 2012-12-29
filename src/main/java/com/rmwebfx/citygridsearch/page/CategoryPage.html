@@ -28,13 +28,22 @@
 
 <wicket:extend>
 
-<div wicket:id="results">
-	<div><a wicket:id="placeLink"><b><span wicket:id="placeName"></span></b></a><br />
-	<span wicket:id="categories"></span><br />
-	<span wicket:id="address"></span><br /><br /></div>
+<div id="col_left">
+	<h2 wicket:id="catTitle"></h2>
+	<br clear="all" />
+	
+	<br />
+	
+	<div wicket:id="results">
+		<div><a wicket:id="placeLink"><b><span wicket:id="placeName"></span></b></a><br />
+		<span wicket:id="categories"></span><br />
+		<span wicket:id="address"></span><br /><br /></div>
+	</div>
+	
+	<div id="pages"></div>
 </div>
 
-<div id="pages"></div>
+<div id="col_right"><h3>Right Column</h3></div>
 </wicket:extend>
 
 </body>
