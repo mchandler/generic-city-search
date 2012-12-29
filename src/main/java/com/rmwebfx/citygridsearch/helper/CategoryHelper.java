@@ -76,4 +76,32 @@ public class CategoryHelper {
 		return 5;
 	}
 	
+	public static String getCategoryString(int category) {
+		if (category == 1) {
+			return "Bars & Clubs";
+		}
+		
+		if (category == 2) {
+			return "Hotels";
+		}
+		
+		if (category == 5) {
+			return "Restaurants";
+		}
+		
+		if (category == 6) {
+			return "Shopping";
+		}
+		
+		if (category == 7) {
+			return "Spa & Beauty";
+		}
+		
+		if (category == 8) {
+			return "Travel";
+		}
+		
+		return "Restaurants";
+	}
+	
 }
